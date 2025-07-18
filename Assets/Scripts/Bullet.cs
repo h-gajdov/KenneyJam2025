@@ -9,20 +9,20 @@ public class Bullet : MonoBehaviour {
 
     public GameObject shotFrom;
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    protected void OnTriggerEnter2D(Collider2D collision) {
         HandleContact(collision.gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    protected void OnCollisionEnter2D(Collision2D collision) {
         HandleContact(collision.gameObject);
     }
 
-    private void HandleContact(GameObject other) {
+    protected void HandleContact(GameObject other) {
+        if (other.CompareTag("Bullet")) return;
         if (other.gameObject == shotFrom) return;
         if (other.gameObject.CompareTag("PowerCore") && shotFrom.CompareTag("Player")) return;
         if (other.tag == shotFrom.tag) {
             if(other.CompareTag("Enemy")) return;
-            if (other.CompareTag("Bullet")) return;
         }
 
         Debug.Log($"Hit: {other.gameObject.name}");
@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    private void FixedUpdate() {
+    protected void FixedUpdate() {
         rb.velocity = moveSpeed * transform.up;
     }
 }

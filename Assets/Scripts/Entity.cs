@@ -6,11 +6,14 @@ public abstract class Entity : MonoBehaviour {
     public float health = 100;
     public float moveSpeed = 1f;
     public float fireRate = 2f;
+    public float missleFireRate = 0.5f;
     public Rigidbody2D rb;
     public GameObject bulletPrefab;
+    public GameObject misslePrefab;
     public List<Transform> shootingPoints;
 
     protected float nextTimeToFire;
+    protected float nextTimeToFireMissile;
     protected int shootingPointIdx = 0;
 
     protected abstract void Move();

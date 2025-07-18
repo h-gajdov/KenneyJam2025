@@ -51,6 +51,7 @@ MonoBehaviour:
   fireRate: 2
   rb: {fileID: 253051095145024732}
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
+  misslePrefab: {fileID: 4583669561117234124, guid: ac6c4b3f86bc462498fec20fe3fe12d6, type: 3}
   shootingPoints:
   - {fileID: 899860833974624181}
   - {fileID: 3668277887677526808}

@@ -17,7 +17,7 @@ public static class GameMath {
         return GetLookAtRotation(source, destination, Vector3.forward, -90);
     }
 
-    public static Quaternion GetLookAtRotation(Vector3 source, Vector3 destination, Vector3 axis, float offset) {
+    public static Quaternion GetLookAtRotation(Vector3 source, Vector3 destination, Vector3 axis, float offset = 0) {
         Vector3 lookDirection = (source - destination).normalized;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
         return Quaternion.Euler(axis * (angle + offset));

@@ -25,11 +25,13 @@ public class Enemy : Entity {
     private void Update() {
         if (!canShoot) return;
 
+        bool canShootMissle = false;
         if (Vector3.Distance(transform.position, GameManager.PlayerPosition) <= aimPlayerDistance) {
             if (type != EnemyType.Tank) LookAt(GameManager.PlayerPosition);
-            else FireMissleAt(GameManager.PlayerTransform);
+            else canShootMissle = true;
         } else LookAt(Vector3.zero);
 
+        if(canShootMissle && Time.time >= nextTimeToFireMissile) FireMissileAt(GameManager.PlayerTransform);
         if (Time.time < nextTimeToFire) return;
         Shoot();
     }
@@ -43,8 +45,11 @@ public class Enemy : Entity {
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, turnSmoothness * Time.deltaTime);
     }
 
-    private void FireMissleAt(Transform transform) { 
-        
+    private void FireMissileAt(Transform target) {
+        Missile missle = Instantiate(misslePrefab, transform.position, transform.rotation).GetComponent<Missile>();
+        missle.shotFrom = gameObject;
+        missle.target = target;
+        nextTimeToFireMissile = Time.time + (1 / missleFireRate);
     }
 
     protected override void Move() {
