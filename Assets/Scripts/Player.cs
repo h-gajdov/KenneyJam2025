@@ -28,4 +28,8 @@ public class Player : Entity {
             velocity = Vector2.Lerp(velocity, Vector2.zero, Time.deltaTime * moveSmoothTime);
         }
     }
+
+    public override void Die() {
+        ship.gameObject.SetActive(false);
+    }
 }

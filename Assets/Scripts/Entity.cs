@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Entity : MonoBehaviour {
+    public float health = 100;
     public float moveSpeed = 1f;
     public float fireRate = 2f;
     public Rigidbody2D rb;
@@ -20,10 +21,20 @@ public abstract class Entity : MonoBehaviour {
 
     protected void Shoot(Quaternion rotation) {
         Vector3 shootingPosition = shootingPoints[shootingPointIdx].position;
-        GameObject bullet = Instantiate(bulletPrefab, shootingPosition, rotation);
+        Bullet bullet = Instantiate(bulletPrefab, shootingPosition, rotation).GetComponent<Bullet>();
+        bullet.shotFrom = gameObject;
         shootingPointIdx = (shootingPointIdx + 1) % shootingPoints.Count;
         Destroy(bullet, 10);
 
         nextTimeToFire = Time.time + (1 / fireRate);
+    }
+
+    public void TakeDamage(float damage) {
+        health -= damage;
+        if (health <= 0) Die(); 
+    }
+
+    public virtual void Die() {
+        Destroy(gameObject);
     }
 }
