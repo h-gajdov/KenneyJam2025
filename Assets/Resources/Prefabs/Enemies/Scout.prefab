@@ -216,6 +216,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8857200517316109380}
+  bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
+  shootingPoints:
+  - {fileID: 1910928073789216236}
+  - {fileID: 3730089001264732288}
 --- !u!50 &8857200517316109380
 Rigidbody2D:
   serializedVersion: 4
