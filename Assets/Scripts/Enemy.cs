@@ -2,19 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
-    public static float moveSpeed = 10f;
+public class Enemy : Entity {
     public static float distanceToStop = 25f;
-    public static float fireRate = 2f;
-    public Rigidbody2D rb;
-    public GameObject bulletPrefab;
-    public List<Transform> shootingPoints;
 
     Vector3 targetDestination;
-    float nextTimeToFire;
     float totalDistance;
     bool canShoot = false;
-    int shootingPointIdx = 0;
 
     private void Start() {
         targetDestination = transform.position.normalized * distanceToStop;
@@ -26,14 +19,13 @@ public class Enemy : MonoBehaviour {
         if (!canShoot || Time.time < nextTimeToFire) return;
 
         Shoot();
-        nextTimeToFire = Time.time + (1f / nextTimeToFire);
     }
 
     private void FixedUpdate() {
         Move();
     }
 
-    private void Move() {
+    protected override void Move() {
         float distanceFromDestination = Vector3.Distance(transform.position, targetDestination);
         float percentToDestination = 1f - Mathf.Clamp01(distanceFromDestination / totalDistance);
         float speed = moveSpeed * GameMath.ReductionFunctionValueForEnemy(percentToDestination);
@@ -46,15 +38,8 @@ public class Enemy : MonoBehaviour {
         if (canShoot) transform.position = targetDestination;
     }
 
-    private void Shoot() {
-        Vector3 shootingPosition = shootingPoints[shootingPointIdx].position;
-        GameObject bullet = Instantiate(bulletPrefab, shootingPosition, transform.rotation);
-        shootingPointIdx = (shootingPointIdx + 1) % shootingPoints.Count;
-        Destroy(bullet, 10);
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(Vector3.zero, distanceToStop);
     }
-
-    //private void OnDrawGizmosSelected() {
-    //    Gizmos.color = Color.green;
-    //    Gizmos.DrawWireSphere(Vector3.zero, distanceToStop);
-    //}
 }
