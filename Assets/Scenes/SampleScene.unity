@@ -400,7 +400,7 @@ MonoBehaviour:
   rb: {fileID: 974194783}
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
   shootingPoints:
-  - {fileID: 1424044030}
+  - {fileID: 1690611176}
   - {fileID: 465221711}
   moveSmoothTime: 5
   ship: {fileID: 665212453}
@@ -467,9 +467,9 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.96, y: 1.63}
   m_EdgeRadius: 0
---- !u!4 &1424044030 stripped
+--- !u!4 &1690611176 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5860921769153068148, guid: 4c7abf66dde3a5b4a824d741ac669a1a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8615291424259289507, guid: 4c7abf66dde3a5b4a824d741ac669a1a, type: 3}
   m_PrefabInstance: {fileID: 2653663030323133922}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1835644003
@@ -620,6 +620,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4756804342162655555, guid: 4c7abf66dde3a5b4a824d741ac669a1a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860921769153068148, guid: 4c7abf66dde3a5b4a824d741ac669a1a, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6518184461658986977, guid: 4c7abf66dde3a5b4a824d741ac669a1a, type: 3}

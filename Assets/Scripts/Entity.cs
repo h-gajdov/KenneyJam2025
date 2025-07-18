@@ -23,10 +23,15 @@ public abstract class Entity : MonoBehaviour {
         Vector3 shootingPosition = shootingPoints[shootingPointIdx].position;
         Bullet bullet = Instantiate(bulletPrefab, shootingPosition, rotation).GetComponent<Bullet>();
         bullet.shotFrom = gameObject;
-        shootingPointIdx = (shootingPointIdx + 1) % shootingPoints.Count;
         Destroy(bullet, 10);
 
         nextTimeToFire = Time.time + (1 / fireRate);
+
+        Animator anim;
+        if (shootingPoints[shootingPointIdx].TryGetComponent<Animator>(out anim)) {
+            anim.SetTrigger("Shoot");
+        }
+        shootingPointIdx = (shootingPointIdx + 1) % shootingPoints.Count;
     }
 
     public void TakeDamage(float damage) {
