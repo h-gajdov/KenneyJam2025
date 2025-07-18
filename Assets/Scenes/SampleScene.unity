@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &55277614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,7 +395,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3309784605350595463, guid: 4c7abf66dde3a5b4a824d741ac669a1a, type: 3}
   m_PrefabInstance: {fileID: 2653663030323133922}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &905399374
+--- !u!114 &905399375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -452,7 +452,7 @@ MonoBehaviour:
   shootingPoints:
   - {fileID: 1690611176}
   - {fileID: 465221711}
-  motors: {fileID: 905399374}
+  motors: {fileID: 905399375}
   moveSmoothTime: 5
   ship: {fileID: 665212453}
 --- !u!50 &974194783
