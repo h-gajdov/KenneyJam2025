@@ -11,6 +11,7 @@ public abstract class Entity : MonoBehaviour {
     public GameObject bulletPrefab;
     public GameObject misslePrefab;
     public List<Transform> shootingPoints;
+    public Motors motors;
 
     protected float nextTimeToFire;
     protected float nextTimeToFireMissile;

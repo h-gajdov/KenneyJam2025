@@ -17,6 +17,8 @@ public class Enemy : Entity {
     bool canShoot = false;
 
     private void Start() {
+        motors.TurnOnMotors();
+
         targetDestination = transform.position.normalized * distanceToStop;
         totalDistance = Vector3.Distance(transform.position, targetDestination);
         transform.rotation = GameMath.GetLookAtRotation(transform.position, Vector3.zero, Vector3.forward, 90f);
@@ -58,6 +60,7 @@ public class Enemy : Entity {
         float speed = moveSpeed * GameMath.ReductionFunctionValueForEnemy(percentToDestination);
         if (speed < 0.1) {
             speed = 0;
+            motors.TurnOffMotors();
             canShoot = true;
         }
 

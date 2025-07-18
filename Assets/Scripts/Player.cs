@@ -24,8 +24,10 @@ public class Player : Entity {
         Vector2 input = x * ship.right + y * ship.up;
         if (input.magnitude > 0.01f) {
             velocity = Vector2.Lerp(velocity, input.normalized * moveSpeed, Time.deltaTime * moveSmoothTime);
+            motors.TurnOnMotors();
         } else {
             velocity = Vector2.Lerp(velocity, Vector2.zero, Time.deltaTime * moveSmoothTime);
+            motors.TurnOffMotors();
         }
     }
 
