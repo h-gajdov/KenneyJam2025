@@ -2,8 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType {
+    Scout, Tank
+}
+
 public class Enemy : Entity {
+    public EnemyType type;
     public static float distanceToStop = 25f;
+    public static float aimPlayerDistance = 7f;
+    public static float turnSmoothness = 25f;
 
     Vector3 targetDestination;
     float totalDistance;
@@ -16,13 +23,28 @@ public class Enemy : Entity {
     }
 
     private void Update() {
-        if (!canShoot || Time.time < nextTimeToFire) return;
+        if (!canShoot) return;
 
+        if (Vector3.Distance(transform.position, GameManager.PlayerPosition) <= aimPlayerDistance) {
+            if (type != EnemyType.Tank) LookAt(GameManager.PlayerPosition);
+            else FireMissleAt(GameManager.PlayerTransform);
+        } else LookAt(Vector3.zero);
+
+        if (Time.time < nextTimeToFire) return;
         Shoot();
     }
 
     private void FixedUpdate() {
         Move();
+    }
+
+    private void LookAt(Vector3 position) {
+        Quaternion targetRot = GameMath.GetLookAtRotation(transform.position, position, Vector3.forward, 90f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, turnSmoothness * Time.deltaTime);
+    }
+
+    private void FireMissleAt(Transform transform) { 
+        
     }
 
     protected override void Move() {

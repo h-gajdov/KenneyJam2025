@@ -54,6 +54,7 @@ MonoBehaviour:
   shootingPoints:
   - {fileID: 899860833974624181}
   - {fileID: 3668277887677526808}
+  type: 1
 --- !u!50 &253051095145024732
 Rigidbody2D:
   serializedVersion: 4
