@@ -30,14 +30,6 @@ class Wave {
 }
 
 public class WaveManager : MonoBehaviour {
-    private Wave[] waves = {
-        new Wave(3, 0, 1, 2.5f, 0f, 6f, 5),
-        new Wave(5, 1, 2, 2f, 6f, 5f, 6),
-        new Wave(7, 2, 3, 1.5f, 5.5f, 4f, 7),
-        new Wave(8, 3, 4, 1.2f, 5f, 3.5f, 8),
-        new Wave(10, 5, 5, 1f, 4.5f, 3f, 9)
-    };
-
     public float spawnRadius;
     public GameObject scoutPrefab, tankPrefab, meteorPrefab;
     public GameObject shop;
@@ -45,7 +37,6 @@ public class WaveManager : MonoBehaviour {
 
     public List<GameObject> aliveEnemies = new List<GameObject>();
 
-    Wave currentWave;
     bool waveInProgress = false;
     float targetTime;
     int numberOfWave = 0;
@@ -71,8 +62,7 @@ public class WaveManager : MonoBehaviour {
         aliveEnemies.RemoveAll(enemy => toDelete.Contains(enemy));
 
         if(aliveEnemies.Count == 0 && currentNumberOfSpawnedEnemies == targetNumberOfEnemies) {
-            Debug.Log(currentWave.waitAfter);
-            StartCoroutine(EndWave(currentWave.waitAfter));
+            StartCoroutine(EndWave(10f));
         }
     }
 
@@ -80,13 +70,20 @@ public class WaveManager : MonoBehaviour {
         CameraManager.SetZoomedOut(false);
         shop.SetActive(false);
 
-        currentWave = waves[index];
-        targetNumberOfEnemies = currentWave.numberOfScouts + currentWave.numberOfTanks + currentWave.numberOfMeteors;
+        int numberOfScouts = GetScoutCount(numberOfWave);
+        int numberOfMeteors = GetMeteorCount(numberOfWave);
+        int numberOfTanks = GetTankCount(numberOfWave);
+
+        float scoutSpawnRate = GetScoutSpawnInterval(numberOfWave);
+        float meteorSpawnRate = GetMeteorSpawnInterval(numberOfWave);
+        float tankSpawnRate = GetTankSpawnInterval(numberOfWave);
+
+        targetNumberOfEnemies = numberOfScouts + numberOfMeteors + numberOfTanks;
         currentNumberOfSpawnedEnemies = 0;
 
-        if(currentWave.numberOfScouts != 0) StartCoroutine(SpawnEnemy(scoutPrefab, currentWave.scoutSpawnRate, currentWave.numberOfScouts));
-        if(currentWave.numberOfTanks != 0) StartCoroutine(SpawnEnemy(tankPrefab, currentWave.tankSpawnRate, currentWave.numberOfTanks));
-        if(currentWave.numberOfMeteors != 0) StartCoroutine(SpawnEnemy(meteorPrefab, currentWave.meteorSpawnRate, currentWave.numberOfMeteors));
+        if(numberOfScouts != 0) StartCoroutine(SpawnEnemy(scoutPrefab, scoutSpawnRate, numberOfScouts));
+        if(numberOfTanks != 0) StartCoroutine(SpawnEnemy(tankPrefab, tankSpawnRate, numberOfTanks));
+        if(numberOfMeteors != 0) StartCoroutine(SpawnEnemy(meteorPrefab, meteorSpawnRate, numberOfMeteors));
     }
 
     private IEnumerator SpawnEnemy(GameObject prefab, float waitTime, int count) {
@@ -111,9 +108,30 @@ public class WaveManager : MonoBehaviour {
 
         yield return new WaitForSeconds(waitTime);
 
-        if (numberOfWave == 5) 
-            Debug.LogError("IMLEMENT BOSS FIGHT!");
-        else 
-            StartWave(numberOfWave++);
+        StartWave(numberOfWave++);
+    }
+
+    public int GetScoutCount(int wave) {
+        return 3 + wave; // Base 3, +1 per wave
+    }
+
+    public int GetTankCount(int wave) {
+        return Mathf.FloorToInt(wave / 2f); // 1 tank every 2 waves
+    }
+
+    public int GetMeteorCount(int wave) {
+        return Mathf.FloorToInt(wave / 3f); // 1 meteor every 3 waves
+    }
+
+    public float GetScoutSpawnInterval(int wave) {
+        return Mathf.Clamp(1.5f - wave * 0.04f, 0.4f, 1.5f);
+    }
+
+    public float GetMeteorSpawnInterval(int wave) {
+        return Mathf.Clamp(3.5f - wave * 0.06f, 1.0f, 3.5f);
+    }
+
+    public float GetTankSpawnInterval(int wave) {
+        return Mathf.Clamp(6f - wave * 0.1f, 2f, 6f);
     }
 }

@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour {
     public Image sliderFill;
     public Image sliderBackground;
+    public Entity entity;
+    public bool hideBackground = true;
 
     Slider slider;
-    Entity entity;
     Meteor meteor;
     float timeOfLastHealthBarUpdate;
     float prevValue;
@@ -16,7 +17,7 @@ public class HealthBar : MonoBehaviour {
     private void Start() {
         slider = GetComponent<Slider>();
         slider.value = prevValue = 1;
-        entity = GetComponentInParent<Entity>();
+        if(entity == null) entity = GetComponentInParent<Entity>();
         meteor = GetComponentInParent<Meteor>();
     }
 
@@ -24,16 +25,20 @@ public class HealthBar : MonoBehaviour {
         float healthPercent = (entity != null) ? entity.health / entity.startHealth : meteor.health / meteor.startHealth;
         slider.value = healthPercent;
         sliderFill.color = GameManager.SampleGradient(healthPercent);
+        Debug.Log(GameManager.SampleGradient(healthPercent));
+        Debug.Log(sliderFill.color);
 
-        if (prevValue != healthPercent) timeOfLastHealthBarUpdate = Time.time;
-        prevValue = healthPercent;
+        if(hideBackground) {
+            if (prevValue != healthPercent) timeOfLastHealthBarUpdate = Time.time;
+            prevValue = healthPercent;
 
-        float timePassed = Time.time - timeOfLastHealthBarUpdate;
-        if (timePassed > 5f) timePassed = 5f;
+            float timePassed = Time.time - timeOfLastHealthBarUpdate;
+            if (timePassed > 5f) timePassed = 5f;
 
-        float alpha = GameMath.ReductionFunctionForHealthBar(timePassed);
-        SetImageTransparency(sliderFill, alpha);
-        SetImageTransparency(sliderBackground, alpha);
+            float alpha = GameMath.ReductionFunctionForHealthBar(timePassed);
+            SetImageTransparency(sliderFill, alpha);
+            SetImageTransparency(sliderBackground, alpha);
+        }
     }
 
     private void SetImageTransparency(Image image, float alpha) {
