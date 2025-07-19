@@ -29,12 +29,13 @@ public class Bullet : MonoBehaviour {
                 if(other.CompareTag("Enemy")) return;
             }
         }
+        if (gameObject.CompareTag("Meteor") && !other.gameObject.CompareTag("PowerCore")) return;
 
         //Debug.Log($"Hit: {other.gameObject.name}");
 
-        Entity entity;
-        if (other.gameObject.TryGetComponent<Entity>(out entity)) {
-            entity.TakeDamage(damage);
+        ITarget target;
+        if (other.gameObject.TryGetComponent<ITarget>(out target)) {
+            target.TakeDamage(damage);
         }
 
         float randAngle = Random.Range(0, 360f);

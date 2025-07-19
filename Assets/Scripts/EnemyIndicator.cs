@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyIndicator : MonoBehaviour
 {
@@ -17,8 +18,15 @@ public class EnemyIndicator : MonoBehaviour
     public float edgePadding = 50f;
 
     public void Initialize(Enemy target) {
+        transform.parent = UIManager.IndicatorsParent;
         enemy = target.transform;
         enemyTypeImage.sprite = Global.enemySprites[target.type];
+    }
+
+    public void Initialize(Meteor meteor) {
+        transform.parent = UIManager.IndicatorsParent;
+        enemy = meteor.transform;
+        enemyTypeImage.sprite = meteor.sprite;
     }
 
     private void Start() {

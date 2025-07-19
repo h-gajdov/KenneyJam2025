@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Global {
     public static List<Sprite> explosionSprites = new List<Sprite>();
+    public static List<Sprite> meteorSprites = new List<Sprite>();
     public static Sprite tankSprite, scoutSprite;
     public static Dictionary<EnemyType, Sprite> enemySprites = new Dictionary<EnemyType, Sprite>();
 
@@ -19,5 +20,11 @@ public class Global {
         enemySprites.Clear();
         enemySprites.Add(EnemyType.Tank, tankSprite);
         enemySprites.Add(EnemyType.Scout, scoutSprite);
+
+        meteorSprites.Clear();
+        for(int i = 1; i < 4; i++) {
+            Sprite meteor = Resources.Load<Sprite>($"SpaceShooterExtension/PNG/Sprites X2/Meteors/spaceMeteors_00{i}");
+            meteorSprites.Add(meteor);
+        }
     }
 }

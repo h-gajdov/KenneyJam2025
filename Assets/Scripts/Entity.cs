@@ -2,8 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Entity : MonoBehaviour {
+public interface ITarget {
+    public void TakeDamage(float damage);
+    public void Die();
+
+    public Transform GetTransform();
+}
+
+public class Target : MonoBehaviour, ITarget {
     public float health = 100;
+
+    public void TakeDamage(float damage) {
+        health -= damage;
+        if (health <= 0) Die();
+    }
+
+    public virtual void Die() {
+        Destroy(gameObject);
+    }
+
+    public Transform GetTransform() {
+        return transform;
+    }
+}
+
+public abstract class Entity : Target {
     public float moveSpeed = 1f;
     public float fireRate = 2f;
     public float missleFireRate = 0.5f;
@@ -38,11 +61,6 @@ public abstract class Entity : MonoBehaviour {
         shootingPointIdx = (shootingPointIdx + 1) % shootingPoints.Count;
     }
 
-    public void TakeDamage(float damage) {
-        health -= damage;
-        if (health <= 0) Die(); 
-    }
-
     protected void FireMissileAt(Transform target) {
         Missile missle = Instantiate(misslePrefab, transform.position, shipBody.rotation).GetComponent<Missile>();
         missle.damage = missleDamage;
@@ -50,9 +68,5 @@ public abstract class Entity : MonoBehaviour {
         missle.target = target;
         nextTimeToFireMissile = Time.time + (1 / missleFireRate);
         Destroy(missle.gameObject, 5f);
-    }
-
-    public virtual void Die() {
-        Destroy(gameObject);
     }
 }

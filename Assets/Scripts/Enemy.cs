@@ -13,6 +13,7 @@ public class Enemy : Entity {
     public static float distanceToStop = 25f;
     public static float aimPlayerDistance = 7f;
     public static float turnSmoothness = 25f;
+    public static int succession = 0;
 
     EnemyIndicator indicator;
     Vector3 targetDestination;
@@ -69,7 +70,7 @@ public class Enemy : Entity {
         rb.velocity = shipBody.up * speed;
         if (canShoot) transform.position = targetDestination;
     }
-    static int succession = 0;
+
     public override void Die() {
         base.Die();
         if (Player.instance.timeOfLastKilledEnemy > Time.time - 2f) {

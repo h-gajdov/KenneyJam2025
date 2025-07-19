@@ -86,20 +86,23 @@ public class Player : Entity {
         shipBody.gameObject.SetActive(false);
     }
 
-    public Enemy[] GetEnemiesInRange() {
+    public ITarget[] GetEnemiesInRange() {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, enemyInRangeRadius);
-        List<Enemy> enemies = new List<Enemy>();
+        List<ITarget> enemies = new List<ITarget>();
         foreach(var hit in hits) {
-            Enemy enemy;
-            if (hit.TryGetComponent<Enemy>(out enemy)) enemies.Add(enemy);
+            ITarget enemy;
+            if (hit.TryGetComponent<ITarget>(out enemy)) {
+                if (enemy.GetTransform().gameObject.CompareTag("Player")) continue;
+                enemies.Add(enemy);
+            }
         }
         return enemies.ToArray();
     }
 
     private void TargetEnemiesInRange() {
-        Enemy[] enemiesInRange = GetEnemiesInRange();
+        ITarget[] enemiesInRange = GetEnemiesInRange();
         if (enemiesInRange.Length == 0) return;
-        missleCrosshair.SetTarget(enemiesInRange[0].transform);
+        missleCrosshair.SetTarget(enemiesInRange[0].GetTransform());
     }
 
     public void AddToPowerMeter() {
