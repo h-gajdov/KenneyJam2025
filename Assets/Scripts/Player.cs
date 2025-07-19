@@ -100,7 +100,7 @@ public class Player : Entity {
         foreach(var hit in hits) {
             ITarget enemy;
             if (hit.TryGetComponent<ITarget>(out enemy)) {
-                if (enemy.GetTransform().gameObject.CompareTag("Player")) continue;
+                if (enemy.GetTransform().gameObject.CompareTag("Player") || enemy.GetTransform().gameObject.CompareTag("PowerCore")) continue;
                 enemies.Add(enemy);
             }
         }

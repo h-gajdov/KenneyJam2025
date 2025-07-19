@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 164618092}
   - component: {fileID: 164618093}
+  - component: {fileID: 164618094}
   m_Layer: 5
   m_Name: PowerMeter
   m_TagString: Untagged
@@ -297,6 +298,25 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &164618094
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164618091}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e10da8d2645564a4da44ac7e18f818f6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &219086581
 GameObject:
   m_ObjectHideFlags: 0
@@ -5487,7 +5507,7 @@ GameObject:
   - component: {fileID: 1759796448}
   m_Layer: 0
   m_Name: HealingPlatform
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5735,6 +5755,7 @@ GameObject:
   - component: {fileID: 1835644005}
   - component: {fileID: 1835644004}
   - component: {fileID: 1835644006}
+  - component: {fileID: 1835644007}
   m_Layer: 0
   m_Name: PowerCore
   m_TagString: PowerCore
@@ -5826,6 +5847,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 14.6
+--- !u!114 &1835644007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835644003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa4045ae45215f449d6419ad807c026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startHealth: 10000
+  health: 10000
+  healthBar: {fileID: 964545021}
+  sliderFill: {fileID: 742915372}
 --- !u!1 &1930292418
 GameObject:
   m_ObjectHideFlags: 0
