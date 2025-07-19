@@ -20,7 +20,7 @@ public class Player : Entity {
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
-        Vector2 input = x * shipBody.right + y * shipBody.up;
+        Vector2 input = x * transform.right + y * transform.up;
         if (input.magnitude > 0.01f) {
             velocity = Vector2.Lerp(velocity, input.normalized * moveSpeed, Time.deltaTime * moveSmoothTime);
             motors.TurnOnMotors();
