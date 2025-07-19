@@ -9,13 +9,16 @@ public class CameraManager : MonoBehaviour
     public float blendingSmoothnessSpeed = 5f;
 
     public static Camera mainCamera;
+    bool zoomedOut = false;
 
     private void Start() {
         mainCamera = Camera.main;
     }
 
     private void Update() {
-        if (Input.GetKey(KeyCode.Z)) FocusOnPowerCore();
+        if (Input.GetKeyDown(KeyCode.Z)) zoomedOut = !zoomedOut;
+
+        if (zoomedOut) FocusOnPowerCore();
         else FocusOnPlayer();
     }
 

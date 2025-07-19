@@ -101,7 +101,7 @@ MonoBehaviour:
   rb: {fileID: 3656658167547078912}
   moveSpeed: 1
   damage: 0
-  destroyOnContact: 1
+  destroyOnContact: 0
   impactEffectPrefab: {fileID: 6120103980194008546, guid: 0a439591fec1e614285d0524e022194f, type: 3}
   shotFrom: {fileID: 0}
   health: 100

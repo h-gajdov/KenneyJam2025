@@ -32,4 +32,16 @@ public static class GameMath {
     public static float ReductionFunctionForHealthBar(float x) {
         return 1 - x * x;
     }
+
+    public static Vector2 RotateVector(Vector3 v, float angleDegrees) {
+        float rad = angleDegrees * Mathf.Deg2Rad;
+        float cos = Mathf.Cos(rad);
+        float sin = Mathf.Sin(rad);
+
+        return new Vector3(
+            v.x * cos - v.y * sin,
+            v.x * sin + v.y * cos,
+            0
+        );
+    }
 }

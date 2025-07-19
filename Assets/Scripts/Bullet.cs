@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour {
         if(shotFrom != null) {
             if (other.gameObject.CompareTag("PowerCore") && shotFrom.CompareTag("Player")) return;
             if (other.tag == shotFrom.tag) {
-                if(other.CompareTag("Enemy")) return;
+                if(other.CompareTag("Enemy") || other.CompareTag("Player")) return;
             }
         }
         if (gameObject.CompareTag("Meteor") && !other.gameObject.CompareTag("PowerCore")) return;
@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour {
         impactEffect.GetComponentInChildren<SpriteRenderer>().sprite = Global.explosionSprites[randImpactSprite];
 
         Destroy(impactEffect, 1);
-        if(destroyOnContact) Destroy(gameObject);
+        if(destroyOnContact || other.CompareTag("PowerCore")) Destroy(gameObject);
     }
 
     protected void FixedUpdate() {
