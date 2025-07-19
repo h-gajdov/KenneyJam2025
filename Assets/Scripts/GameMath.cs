@@ -33,7 +33,7 @@ public static class GameMath {
         return 1 - x * x;
     }
 
-    public static Vector2 RotateVector(Vector3 v, float angleDegrees) {
+    public static Vector3 RotateVector(Vector3 v, float angleDegrees) {
         float rad = angleDegrees * Mathf.Deg2Rad;
         float cos = Mathf.Cos(rad);
         float sin = Mathf.Sin(rad);

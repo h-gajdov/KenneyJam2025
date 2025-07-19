@@ -10,7 +10,7 @@ public enum EnemyType {
 public class Enemy : Entity {
     public EnemyType type;
     public GameObject enemyIndicator;
-    public int dropCoinAmount;
+    public float dropCoinsAmount;
     public static float distanceToStop = 25f;
     public static float aimPlayerDistance = 7f;
     public static float turnSmoothness = 25f;

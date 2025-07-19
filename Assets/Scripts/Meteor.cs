@@ -5,6 +5,7 @@ using UnityEngine;
 public class Meteor : Bullet, ITarget {
     public float startHealth = 150f;
     public float health = 100;
+    public float dropCoinsAmount = 8f;
     public GameObject enemyIndicator;
     public Transform body;
     public Sprite sprite;

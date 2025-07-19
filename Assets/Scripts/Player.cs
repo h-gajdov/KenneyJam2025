@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : Entity {
     public float moveSmoothTime = 1f;
     public float enemyInRangeRadius = 10f;
+    public float pickupsInRangeRadius = 5f;
     public float timeOfLastKilledEnemy;
     public float powerMeterValue = 0;
     public float powerMeterDecaySpeed = 4f;
     public float ultimateBulletDamage = 100f;
     public float ultimateFireRate = 5f;
+    public float coins = 40f;
     public GameObject ultimateBulletPrefab;
     public MissleCrosshair missleCrosshair;
     public Slider powerMeterSlider;
+    public TextMeshProUGUI coinsText;
 
     Vector2 velocity = Vector2.zero;
     Animator powerMeterAnim;
@@ -39,6 +43,8 @@ public class Player : Entity {
     }
 
     private void Update() {
+        PickUpPickupsInRange();
+
         Move();
         if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire) Shoot();
 
@@ -100,6 +106,17 @@ public class Player : Entity {
         return enemies.ToArray();
     }
 
+    public void PickUpPickupsInRange() {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, pickupsInRangeRadius);
+        List<Pickup> pickups = new List<Pickup>();
+        foreach(var hit in hits) {
+            Pickup pickup;
+            if(hit.TryGetComponent<Pickup>(out pickup)) {
+                pickup.StartMovingToPlayer();
+            }
+        }
+    }
+
     private void TargetEnemiesInRange() {
         ITarget[] enemiesInRange = GetEnemiesInRange();
         if (enemiesInRange.Length == 0) return;
@@ -111,9 +128,16 @@ public class Player : Entity {
         powerMeterValue += 0.4f;
     }
 
+    public void AddCoins(float amount) {
+        coins += amount;
+        coinsText.text = ": " + coins;
+    }
+
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enemyInRangeRadius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, pickupsInRangeRadius);
     }
 
     private IEnumerator UltimateAttack() {

@@ -64,7 +64,7 @@ MonoBehaviour:
   motors: {fileID: 8715948830545396151}
   type: 1
   enemyIndicator: {fileID: 3065762835445772976, guid: 9a79ce7df9c255a40900be70fafa5f5d, type: 3}
-  dropCoinAmount: 15
+  dropCoinsAmount: 15
 --- !u!50 &253051095145024732
 Rigidbody2D:
   serializedVersion: 4

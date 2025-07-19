@@ -1855,7 +1855,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 25
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2368,7 +2368,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668376451}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4e094f44bef7a241a6bfd2f48b5a578, type: 3}
   m_Name: 
@@ -2959,14 +2959,17 @@ MonoBehaviour:
   motors: {fileID: 905399375}
   moveSmoothTime: 5
   enemyInRangeRadius: 10
+  pickupsInRangeRadius: 3
   timeOfLastKilledEnemy: 0
   powerMeterValue: 0
   powerMeterDecaySpeed: 0.1
   ultimateBulletDamage: 100
   ultimateFireRate: 50
+  coins: 40
   ultimateBulletPrefab: {fileID: 742315336842940224, guid: f529897b72ac88f42ae698e029616121, type: 3}
   missleCrosshair: {fileID: 1273435565}
   powerMeterSlider: {fileID: 164618093}
+  coinsText: {fileID: 272719855}
 --- !u!50 &974194783
 Rigidbody2D:
   serializedVersion: 4
@@ -2996,7 +2999,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974194781}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -19.66, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 519420032}
@@ -4569,7 +4572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1607893077
 MonoBehaviour:
   m_ObjectHideFlags: 0
