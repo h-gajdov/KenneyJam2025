@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour {
     public float moveSpeed = 10f;
     public float damage = 10f;
 
+    public GameObject impactEffectPrefab;
     public GameObject shotFrom;
 
     protected void OnTriggerEnter2D(Collider2D collision) {
@@ -31,6 +32,13 @@ public class Bullet : MonoBehaviour {
         if (other.gameObject.TryGetComponent<Entity>(out entity)) {
             entity.TakeDamage(damage);
         }
+
+        float randAngle = Random.Range(0, 360f);
+        GameObject impactEffect = Instantiate(impactEffectPrefab, transform.position, Quaternion.Euler(Vector3.forward * randAngle));
+        int randImpactSprite = Random.Range(0, Global.explosionSprites.Count);
+        impactEffect.GetComponentInChildren<SpriteRenderer>().sprite = Global.explosionSprites[randImpactSprite];
+
+        Destroy(impactEffect, 1);
         Destroy(gameObject);
     }
 

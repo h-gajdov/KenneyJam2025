@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Awake() {
+        Global.Initialize();
         if (instance == null) instance = this;
         else {
             Destroy(this);
