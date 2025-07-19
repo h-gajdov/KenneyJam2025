@@ -7,6 +7,8 @@ public abstract class Entity : MonoBehaviour {
     public float moveSpeed = 1f;
     public float fireRate = 2f;
     public float missleFireRate = 0.5f;
+    public float bulletDamage = 10f;
+    public float missleDamage = 10f;
     public Rigidbody2D rb;
     public GameObject bulletPrefab;
     public GameObject misslePrefab;
@@ -23,6 +25,7 @@ public abstract class Entity : MonoBehaviour {
     protected void Shoot() {
         Vector3 shootingPosition = shootingPoints[shootingPointIdx].position;
         Bullet bullet = Instantiate(bulletPrefab, shootingPosition, shipBody.rotation).GetComponent<Bullet>();
+        bullet.damage = bulletDamage;
         bullet.shotFrom = gameObject;
         Destroy(bullet, 10);
 
@@ -38,6 +41,15 @@ public abstract class Entity : MonoBehaviour {
     public void TakeDamage(float damage) {
         health -= damage;
         if (health <= 0) Die(); 
+    }
+
+    protected void FireMissileAt(Transform target) {
+        Missile missle = Instantiate(misslePrefab, transform.position, shipBody.rotation).GetComponent<Missile>();
+        missle.damage = missleDamage;
+        missle.shotFrom = gameObject;
+        missle.target = target;
+        nextTimeToFireMissile = Time.time + (1 / missleFireRate);
+        Destroy(missle.gameObject, 5f);
     }
 
     public virtual void Die() {
