@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: -5321218359704189163}
   moveSpeed: 20
-  damage: 0
+  damage: 10
   impactEffectPrefab: {fileID: 6120103980194008546, guid: 153b28f0bf91e754a98e1a8b455312a7, type: 3}
   shotFrom: {fileID: 0}
 --- !u!50 &-5321218359704189163

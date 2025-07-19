@@ -10,6 +10,7 @@ public abstract class Entity : MonoBehaviour {
     public Rigidbody2D rb;
     public GameObject bulletPrefab;
     public GameObject misslePrefab;
+    public Transform shipBody;
     public List<Transform> shootingPoints;
     public Motors motors;
 
@@ -20,12 +21,8 @@ public abstract class Entity : MonoBehaviour {
     protected abstract void Move();
 
     protected void Shoot() {
-        Shoot(transform.rotation);
-    }
-
-    protected void Shoot(Quaternion rotation) {
         Vector3 shootingPosition = shootingPoints[shootingPointIdx].position;
-        Bullet bullet = Instantiate(bulletPrefab, shootingPosition, rotation).GetComponent<Bullet>();
+        Bullet bullet = Instantiate(bulletPrefab, shootingPosition, shipBody.rotation).GetComponent<Bullet>();
         bullet.shotFrom = gameObject;
         Destroy(bullet, 10);
 

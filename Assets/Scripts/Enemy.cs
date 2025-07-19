@@ -21,7 +21,7 @@ public class Enemy : Entity {
 
         targetDestination = transform.position.normalized * distanceToStop;
         totalDistance = Vector3.Distance(transform.position, targetDestination);
-        transform.rotation = GameMath.GetLookAtRotation(transform.position, Vector3.zero, Vector3.forward, 90f);
+        shipBody.rotation = GameMath.GetLookAtRotation(transform.position, Vector3.zero, Vector3.forward, 90f);
     }
 
     private void Update() {
@@ -44,14 +44,15 @@ public class Enemy : Entity {
 
     private void LookAt(Vector3 position) {
         Quaternion targetRot = GameMath.GetLookAtRotation(transform.position, position, Vector3.forward, 90f);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, turnSmoothness * Time.deltaTime);
+        shipBody.rotation = Quaternion.Lerp(shipBody.rotation, targetRot, turnSmoothness * Time.deltaTime);
     }
 
     private void FireMissileAt(Transform target) {
-        Missile missle = Instantiate(misslePrefab, transform.position, transform.rotation).GetComponent<Missile>();
+        Missile missle = Instantiate(misslePrefab, transform.position, shipBody.rotation).GetComponent<Missile>();
         missle.shotFrom = gameObject;
         missle.target = target;
         nextTimeToFireMissile = Time.time + (1 / missleFireRate);
+        Destroy(missle.gameObject, 5f);
     }
 
     protected override void Move() {
@@ -64,7 +65,7 @@ public class Enemy : Entity {
             canShoot = true;
         }
 
-        rb.velocity = transform.up * speed;
+        rb.velocity = shipBody.up * speed;
         if (canShoot) transform.position = targetDestination;
     }
 

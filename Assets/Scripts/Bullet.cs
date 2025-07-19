@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Bullet : MonoBehaviour {
     public Rigidbody2D rb;
@@ -21,9 +22,11 @@ public class Bullet : MonoBehaviour {
     protected void HandleContact(GameObject other) {
         if (other.CompareTag("Bullet")) return;
         if (other.gameObject == shotFrom) return;
-        if (other.gameObject.CompareTag("PowerCore") && shotFrom.CompareTag("Player")) return;
-        if (other.tag == shotFrom.tag) {
-            if(other.CompareTag("Enemy")) return;
+        if(shotFrom != null) {
+            if (other.gameObject.CompareTag("PowerCore") && shotFrom.CompareTag("Player")) return;
+            if (other.tag == shotFrom.tag) {
+                if(other.CompareTag("Enemy")) return;
+            }
         }
 
         Debug.Log($"Hit: {other.gameObject.name}");

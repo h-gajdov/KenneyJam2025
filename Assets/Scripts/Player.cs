@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Player : Entity {
     public float moveSmoothTime = 1f;
-    public Transform ship;
 
     Vector2 velocity = Vector2.zero;
 
     private void Update() {
         Move();
-        if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire) Shoot(ship.rotation);
+        if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire) Shoot();
     }
 
     private void FixedUpdate() {
@@ -21,7 +20,7 @@ public class Player : Entity {
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
-        Vector2 input = x * ship.right + y * ship.up;
+        Vector2 input = x * shipBody.right + y * shipBody.up;
         if (input.magnitude > 0.01f) {
             velocity = Vector2.Lerp(velocity, input.normalized * moveSpeed, Time.deltaTime * moveSmoothTime);
             motors.TurnOnMotors();
@@ -32,6 +31,6 @@ public class Player : Entity {
     }
 
     public override void Die() {
-        ship.gameObject.SetActive(false);
+        shipBody.gameObject.SetActive(false);
     }
 }
