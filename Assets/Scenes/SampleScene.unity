@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 219086583}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -326,6 +326,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  enemyInRangeRadius: 20
+  damage: 10
+  fireRate: 5
+  bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
 --- !u!212 &219086584
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -465,7 +469,7 @@ GameObject:
   - component: {fileID: 225821106}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -497,6 +501,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  enemyInRangeRadius: 20
+  damage: 10
+  fireRate: 5
+  bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
 --- !u!212 &225821107
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1383,7 +1391,7 @@ GameObject:
   - component: {fileID: 514741456}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1415,6 +1423,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  enemyInRangeRadius: 20
+  damage: 10
+  fireRate: 5
+  bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
 --- !u!212 &514741457
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2053,7 +2065,7 @@ GameObject:
   - component: {fileID: 690585641}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2085,6 +2097,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  enemyInRangeRadius: 20
+  damage: 10
+  fireRate: 5
+  bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
 --- !u!212 &690585642
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2405,7 +2421,7 @@ GameObject:
   - component: {fileID: 969551049}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2437,6 +2453,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  enemyInRangeRadius: 20
+  damage: 10
+  fireRate: 5
+  bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
 --- !u!212 &969551050
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2619,7 +2639,7 @@ GameObject:
   - component: {fileID: 1060081993}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2651,6 +2671,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  enemyInRangeRadius: 20
+  damage: 10
+  fireRate: 5
+  bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
 --- !u!212 &1060081994
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2715,7 +2739,7 @@ GameObject:
   - component: {fileID: 1085753496}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2747,6 +2771,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  enemyInRangeRadius: 20
+  damage: 10
+  fireRate: 5
+  bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
 --- !u!212 &1085753497
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2811,7 +2839,7 @@ GameObject:
   - component: {fileID: 1088044300}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2843,6 +2871,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  enemyInRangeRadius: 20
+  damage: 10
+  fireRate: 5
+  bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
 --- !u!212 &1088044301
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2907,7 +2939,7 @@ GameObject:
   - component: {fileID: 1089122459}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2939,6 +2971,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  enemyInRangeRadius: 20
+  damage: 10
+  fireRate: 5
+  bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
 --- !u!212 &1089122460
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3556,7 +3592,7 @@ GameObject:
   - component: {fileID: 1396497564}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3588,6 +3624,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  enemyInRangeRadius: 20
+  damage: 10
+  fireRate: 5
+  bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
 --- !u!212 &1396497565
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3784,7 +3824,7 @@ GameObject:
   - component: {fileID: 1480706503}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3816,6 +3856,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  enemyInRangeRadius: 20
+  damage: 10
+  fireRate: 5
+  bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
 --- !u!212 &1480706504
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4013,7 +4057,7 @@ GameObject:
   - component: {fileID: 1514876855}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4045,6 +4089,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  enemyInRangeRadius: 20
+  damage: 10
+  fireRate: 5
+  bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
 --- !u!212 &1514876856
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4116,7 +4164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1607893077
 MonoBehaviour:
   m_ObjectHideFlags: 0
