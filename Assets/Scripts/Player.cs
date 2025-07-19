@@ -25,6 +25,7 @@ public class Player : Entity {
     float nextTimeToSeekForTargets;
     float nextTimeToFireUltimateBullet;
     bool ultimateIsOn = false;
+    public bool inPlatform = false;
 
     public static Player instance;
 
@@ -46,7 +47,7 @@ public class Player : Entity {
         PickUpPickupsInRange();
 
         Move();
-        if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire) Shoot();
+        if (Input.GetMouseButton(0) && Time.time >= nextTimeToFire && !inPlatform) Shoot();
 
         if(missleCrosshair.target == null) {
             if(Time.time >= nextTimeToSeekForTargets) {
