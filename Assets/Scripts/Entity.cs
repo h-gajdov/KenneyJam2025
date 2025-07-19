@@ -10,6 +10,7 @@ public interface ITarget {
 }
 
 public class Target : MonoBehaviour, ITarget {
+    public float startHealth = 100;
     public float health = 100;
 
     public void TakeDamage(float damage) {

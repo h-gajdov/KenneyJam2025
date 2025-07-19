@@ -25,6 +25,7 @@ public class Player : Entity {
     public static Player instance;
 
     private void Awake() {
+        health = startHealth;
         if (instance == null) instance = this;
         else {
             Destroy(this);
@@ -107,7 +108,7 @@ public class Player : Entity {
 
     public void AddToPowerMeter() {
         if (ultimateIsOn) return;
-        powerMeterValue += 0.2f;
+        powerMeterValue += 0.4f;
     }
 
     private void OnDrawGizmosSelected() {
@@ -119,7 +120,7 @@ public class Player : Entity {
         float started = Time.time;
         float elapsed = 0;
         ultimateIsOn = true;
-        while(elapsed < 5f) {
+        while(elapsed < 3f) {
             if(Time.time >= nextTimeToFireUltimateBullet) {
                 Bullet bullet = Instantiate(ultimateBulletPrefab, transform.position, shipBody.rotation).GetComponent<Bullet>();
                 bullet.shotFrom = gameObject;

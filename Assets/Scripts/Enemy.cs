@@ -10,6 +10,7 @@ public enum EnemyType {
 public class Enemy : Entity {
     public EnemyType type;
     public GameObject enemyIndicator;
+    public int dropCoinAmount;
     public static float distanceToStop = 25f;
     public static float aimPlayerDistance = 7f;
     public static float turnSmoothness = 25f;
@@ -21,6 +22,7 @@ public class Enemy : Entity {
     bool canShoot = false;
 
     private void Awake() {
+        health = startHealth;
         indicator = Instantiate(enemyIndicator, UIManager.CanvasTransform, true).GetComponent<EnemyIndicator>();
         indicator.Initialize(this);
     }
@@ -73,7 +75,7 @@ public class Enemy : Entity {
 
     public override void Die() {
         base.Die();
-        if (Player.instance.timeOfLastKilledEnemy > Time.time - 2f) {
+        if (Player.instance.timeOfLastKilledEnemy > Time.time - 5f) {
             succession++;
         } else succession = 1;
         Player.instance.timeOfLastKilledEnemy = Time.time;

@@ -254,12 +254,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00a555278e1d9c4182f77038beb9545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  moveSpeed: 10
-  fireRate: 2
+  startHealth: 50
+  health: 50
+  moveSpeed: 12
+  fireRate: 5
   missleFireRate: 0.5
-  bulletDamage: 0
-  missleDamage: 0
+  bulletDamage: 5
+  missleDamage: 20
   rb: {fileID: 8857200517316109380}
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
   misslePrefab: {fileID: 4583669561117234124, guid: ac6c4b3f86bc462498fec20fe3fe12d6, type: 3}
@@ -270,6 +271,7 @@ MonoBehaviour:
   motors: {fileID: 6516088147278955631}
   type: 0
   enemyIndicator: {fileID: 3065762835445772976, guid: 9a79ce7df9c255a40900be70fafa5f5d, type: 3}
+  dropCoinAmount: 5
 --- !u!50 &8857200517316109380
 Rigidbody2D:
   serializedVersion: 4

@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Meteor : Bullet, ITarget {
+    public float startHealth = 150f;
     public float health = 100;
     public GameObject enemyIndicator;
+    public Transform body;
     public Sprite sprite;
+    public SpriteRenderer spriteRenderer;
 
-    SpriteRenderer spriteRenderer;
     EnemyIndicator indicator;
 
-    private void Start() {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+    private void Awake() {
+        health = startHealth;
+    }
 
+    private void Start() {
         int randIdx = Random.Range(0, Global.meteorSprites.Count);
         Sprite meteorSprite = Global.meteorSprites[randIdx];
         sprite = meteorSprite;

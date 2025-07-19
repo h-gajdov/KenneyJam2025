@@ -9,6 +9,7 @@ public class HealthBar : MonoBehaviour {
 
     Slider slider;
     Entity entity;
+    Meteor meteor;
     float timeOfLastHealthBarUpdate;
     float prevValue;
 
@@ -16,10 +17,11 @@ public class HealthBar : MonoBehaviour {
         slider = GetComponent<Slider>();
         slider.value = prevValue = 1;
         entity = GetComponentInParent<Entity>();
+        meteor = GetComponentInParent<Meteor>();
     }
 
     public void Update() {
-        float healthPercent = entity.health / 100f;
+        float healthPercent = (entity != null) ? entity.health / entity.startHealth : meteor.health / meteor.startHealth;
         slider.value = healthPercent;
         sliderFill.color = GameManager.SampleGradient(healthPercent);
 
