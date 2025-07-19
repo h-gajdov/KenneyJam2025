@@ -28,4 +28,8 @@ public static class GameMath {
         if (t < 0) return 1;
         return -Mathf.Pow(t, 46) + 1;
     }
+
+    public static float ReductionFunctionForHealthBar(float x) {
+        return 1 - x * x;
+    }
 }

@@ -29,7 +29,7 @@ public class HealthBar : MonoBehaviour {
         float timePassed = Time.time - timeOfLastHealthBarUpdate;
         if (timePassed > 5f) timePassed = 5f;
 
-        float alpha = func(timePassed);
+        float alpha = GameMath.ReductionFunctionForHealthBar(timePassed);
         SetImageTransparency(sliderFill, alpha);
         SetImageTransparency(sliderBackground, alpha);
     }
@@ -38,9 +38,5 @@ public class HealthBar : MonoBehaviour {
         Color color = image.color;
         color.a = alpha;
         image.color = color;
-    } 
-
-    float func(float x) {
-        return 1 - x * x;
     }
 }
