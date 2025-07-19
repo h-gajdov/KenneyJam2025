@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public enum EnemyType {
@@ -8,13 +9,20 @@ public enum EnemyType {
 
 public class Enemy : Entity {
     public EnemyType type;
+    public GameObject enemyIndicator;
     public static float distanceToStop = 25f;
     public static float aimPlayerDistance = 7f;
     public static float turnSmoothness = 25f;
 
+    EnemyIndicator indicator;
     Vector3 targetDestination;
     float totalDistance;
     bool canShoot = false;
+
+    private void Awake() {
+        indicator = Instantiate(enemyIndicator, UIManager.CanvasTransform, true).GetComponent<EnemyIndicator>();
+        indicator.Initialize(this);
+    }
 
     private void Start() {
         motors.TurnOnMotors();
@@ -26,6 +34,7 @@ public class Enemy : Entity {
 
     private void Update() {
         if (!canShoot) return;
+        if (!indicator.isBlinking) indicator.StartBlinking();
 
         bool canShootMissle = false;
         if (Vector3.Distance(transform.position, GameManager.PlayerPosition) <= aimPlayerDistance) {
@@ -45,14 +54,6 @@ public class Enemy : Entity {
     private void LookAt(Vector3 position) {
         Quaternion targetRot = GameMath.GetLookAtRotation(transform.position, position, Vector3.forward, 90f);
         shipBody.rotation = Quaternion.Lerp(shipBody.rotation, targetRot, turnSmoothness * Time.deltaTime);
-    }
-
-    private void FireMissileAt(Transform target) {
-        Missile missle = Instantiate(misslePrefab, transform.position, shipBody.rotation).GetComponent<Missile>();
-        missle.shotFrom = gameObject;
-        missle.target = target;
-        nextTimeToFireMissile = Time.time + (1 / missleFireRate);
-        Destroy(missle.gameObject, 5f);
     }
 
     protected override void Move() {
