@@ -15,7 +15,7 @@ public class CrosshairManager : MonoBehaviour {
 
     private void Start() {
         Cursor.visible = false;
-        SetCrosshair(defaultCrosshair);
+        SetCrosshair(inGameCrosshair);
     }
 
     private void Update() {

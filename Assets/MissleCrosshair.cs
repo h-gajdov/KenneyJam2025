@@ -15,7 +15,6 @@ public class MissleCrosshair : MonoBehaviour {
         }
         Vector3 targetScreenPosition = CameraManager.mainCamera.WorldToScreenPoint(target.position);
         float dist = Vector3.Distance(transform.position, targetScreenPosition);
-        Debug.Log(dist);
         if (Vector3.Distance(transform.position, targetScreenPosition) > 20f) 
             transform.position = Vector3.Lerp(transform.position, targetScreenPosition, moveSpeed * Time.deltaTime);
         else

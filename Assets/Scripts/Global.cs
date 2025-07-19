@@ -16,11 +16,8 @@ public class Global {
 
         tankSprite = Resources.Load<Sprite>("SpaceShooterExtension/PNG/Sprites X2/Ships/spaceShips_002");
         scoutSprite = Resources.Load<Sprite>("SpaceShooterExtension/PNG/Sprites X2/Ships/spaceShips_007");
-        Debug.Log(tankSprite);
-        Debug.Log(scoutSprite);
         enemySprites.Clear();
         enemySprites.Add(EnemyType.Tank, tankSprite);
         enemySprites.Add(EnemyType.Scout, scoutSprite);
-        Debug.Log($"COUNT: {enemySprites.Count}");
     }
 }

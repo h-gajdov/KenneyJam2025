@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour {
     public Rigidbody2D rb;
     public float moveSpeed = 10f;
     public float damage = 10f;
+    public bool destroyOnContact = true;
 
     public GameObject impactEffectPrefab;
     public GameObject shotFrom;
@@ -29,7 +30,7 @@ public class Bullet : MonoBehaviour {
             }
         }
 
-        Debug.Log($"Hit: {other.gameObject.name}");
+        //Debug.Log($"Hit: {other.gameObject.name}");
 
         Entity entity;
         if (other.gameObject.TryGetComponent<Entity>(out entity)) {
@@ -42,7 +43,7 @@ public class Bullet : MonoBehaviour {
         impactEffect.GetComponentInChildren<SpriteRenderer>().sprite = Global.explosionSprites[randImpactSprite];
 
         Destroy(impactEffect, 1);
-        Destroy(gameObject);
+        if(destroyOnContact) Destroy(gameObject);
     }
 
     protected void FixedUpdate() {

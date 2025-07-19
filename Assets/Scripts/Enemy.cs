@@ -69,6 +69,15 @@ public class Enemy : Entity {
         rb.velocity = shipBody.up * speed;
         if (canShoot) transform.position = targetDestination;
     }
+    static int succession = 0;
+    public override void Die() {
+        base.Die();
+        if (Player.instance.timeOfLastKilledEnemy > Time.time - 2f) {
+            succession++;
+        } else succession = 1;
+        Player.instance.timeOfLastKilledEnemy = Time.time;
+        Player.instance.AddToPowerMeter();
+    }
 
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.green;

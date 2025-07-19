@@ -18,7 +18,6 @@ public class EnemyIndicator : MonoBehaviour
 
     public void Initialize(Enemy target) {
         enemy = target.transform;
-        Debug.Log(Global.enemySprites.Count);
         enemyTypeImage.sprite = Global.enemySprites[target.type];
     }
 
