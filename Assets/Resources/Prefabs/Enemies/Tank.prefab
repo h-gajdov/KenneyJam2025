@@ -65,6 +65,7 @@ MonoBehaviour:
   type: 1
   enemyIndicator: {fileID: 3065762835445772976, guid: 9a79ce7df9c255a40900be70fafa5f5d, type: 3}
   dropCoinsAmount: 15
+  coin: {fileID: 3155495622024313695, guid: 0833b304733017242afa4acdcd014b37, type: 3}
 --- !u!50 &253051095145024732
 Rigidbody2D:
   serializedVersion: 4

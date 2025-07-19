@@ -7,6 +7,7 @@ public class Meteor : Bullet, ITarget {
     public float health = 100;
     public float dropCoinsAmount = 8f;
     public GameObject enemyIndicator;
+    public GameObject coin;
     public Transform body;
     public Sprite sprite;
     public SpriteRenderer spriteRenderer;
@@ -30,6 +31,15 @@ public class Meteor : Bullet, ITarget {
 
     public void Die() {
         Destroy(gameObject);
+
+        int numberOfCoins = Mathf.CeilToInt(dropCoinsAmount / 5f);
+        while(numberOfCoins > 0) {
+            float value = (dropCoinsAmount <= 5) ? dropCoinsAmount : 5;
+            Coin cn = Instantiate(coin, transform.position, Quaternion.identity).GetComponent<Coin>();
+            cn.value = value;
+            dropCoinsAmount -= value;
+            numberOfCoins--;
+        }
     }
 
     public void TakeDamage(float damage) {

@@ -131,7 +131,9 @@ MonoBehaviour:
   shotFrom: {fileID: 0}
   startHealth: 200
   health: 200
+  dropCoinsAmount: 8
   enemyIndicator: {fileID: 3065762835445772976, guid: 9a79ce7df9c255a40900be70fafa5f5d, type: 3}
+  coin: {fileID: 3155495622024313695, guid: 0833b304733017242afa4acdcd014b37, type: 3}
   body: {fileID: 2690774586670755262}
   sprite: {fileID: 0}
   spriteRenderer: {fileID: 4866119906187647344}

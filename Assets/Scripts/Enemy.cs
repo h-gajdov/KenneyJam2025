@@ -15,6 +15,7 @@ public class Enemy : Entity {
     public static float aimPlayerDistance = 7f;
     public static float turnSmoothness = 25f;
     public static int succession = 0;
+    public GameObject coin;
 
     EnemyIndicator indicator;
     Vector3 targetDestination;
@@ -80,6 +81,14 @@ public class Enemy : Entity {
         } else succession = 1;
         Player.instance.timeOfLastKilledEnemy = Time.time;
         Player.instance.AddToPowerMeter();
+
+        int numberOfCoins = (int)dropCoinsAmount / 5;
+        while (numberOfCoins > 0) {
+            float value = (dropCoinsAmount <= 5) ? dropCoinsAmount : 5;
+            Coin cn = Instantiate(coin, transform.position, Quaternion.identity).GetComponent<Coin>();
+            cn.value = value;
+            numberOfCoins--;
+        }
     }
 
     private void OnDrawGizmosSelected() {
