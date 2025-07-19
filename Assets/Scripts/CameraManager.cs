@@ -9,7 +9,16 @@ public class CameraManager : MonoBehaviour
     public float blendingSmoothnessSpeed = 5f;
 
     public static Camera mainCamera;
+    public static CameraManager instance;
     bool zoomedOut = false;
+
+    private void Awake() {
+        if (instance == null) instance = this;
+        else {
+            Destroy(this);
+            return;
+        }
+    }
 
     private void Start() {
         mainCamera = Camera.main;
@@ -32,5 +41,9 @@ public class CameraManager : MonoBehaviour
         transform.parent = GameManager.PlayerTransform;
         transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.forward * -10f, blendingSmoothnessSpeed * Time.deltaTime);
         mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, defaultSize, blendingSmoothnessSpeed * Time.deltaTime);
+    }
+
+    public static void SetZoomedOut(bool value) {
+        instance.zoomedOut = value;
     }
 }

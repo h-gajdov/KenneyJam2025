@@ -25,6 +25,8 @@ public class Turret : MonoBehaviour {
     }
 
     private void Update() {
+        if (level == 0) return;
+
         if(target == null) target = GetEnemyInRange();
         else if(Time.time >= nextFireTime) {
             transform.rotation = GameMath.GetLookAtRotation(transform.position, target.transform.position, Vector3.forward, 90f);
