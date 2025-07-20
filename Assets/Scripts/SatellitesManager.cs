@@ -33,6 +33,7 @@ public class SatellitesManager : MonoBehaviour
     }
 
     public void BuySatellite() {
+        if (Player.instance.coins < ShopManager.satelliteShieldPrice) return;
         if (numberOfSatellites >= 3 * maxNumberOfSatellitesPerLevel) return;
 
         GameObject satellite = Instantiate(satellitePrefab, satellitesParent, true);
@@ -47,6 +48,8 @@ public class SatellitesManager : MonoBehaviour
             satelliteRadius += 2;
             for (int i = 0; i < spawnPositions.Length; i++) spawnPositions[i] = spawnPositions[i].normalized * satelliteRadius;
         }
+
+        Player.instance.Pay(ShopManager.satelliteShieldPrice);
     }
 
     private void OnDrawGizmosSelected() {

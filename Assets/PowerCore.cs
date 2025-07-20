@@ -9,10 +9,24 @@ public class PowerCore : MonoBehaviour, ITarget {
     public Slider healthBar;
     public Image sliderFill;
 
+    public static PowerCore instance;
+
+    private void Awake() {
+        if (instance == null) instance = this;
+        else {
+            Destroy(this);
+            return;
+        }
+    }
+
     private void Update() {
         float healthPercent = health / startHealth;
         healthBar.value = healthPercent;
         sliderFill.color = GameManager.SampleGradient(healthPercent);
+    }
+
+    public static void Heal(float amount) {
+        instance.health = (instance.health + amount < instance.startHealth) ? instance.health + amount : instance.startHealth;
     }
 
     public void TakeDamage(float amount) {

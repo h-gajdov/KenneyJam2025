@@ -134,6 +134,12 @@ public class Player : Entity {
         coinsText.text = ": " + coins;
     }
 
+    public void Pay(float amount) {
+        coins -= amount;
+        if (coins < 0) coins = 0;
+        coinsText.text = ": " + coins;
+    }
+
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enemyInRangeRadius);

@@ -34,6 +34,7 @@ public class WaveManager : MonoBehaviour {
     public GameObject scoutPrefab, tankPrefab, meteorPrefab;
     public GameObject shop;
     public TextMeshProUGUI timeText;
+    public TextMeshProUGUI waveText;
 
     public List<GameObject> aliveEnemies = new List<GameObject>();
 
@@ -66,17 +67,17 @@ public class WaveManager : MonoBehaviour {
         }
     }
 
-    private void StartWave(int index) {
+    private void StartWave(int wave) {
         CameraManager.SetZoomedOut(false);
         shop.SetActive(false);
 
-        int numberOfScouts = GetScoutCount(numberOfWave);
-        int numberOfMeteors = GetMeteorCount(numberOfWave);
-        int numberOfTanks = GetTankCount(numberOfWave);
+        int numberOfScouts = GetScoutCount(wave);
+        int numberOfMeteors = GetMeteorCount(wave);
+        int numberOfTanks = GetTankCount(wave);
 
-        float scoutSpawnRate = GetScoutSpawnInterval(numberOfWave);
-        float meteorSpawnRate = GetMeteorSpawnInterval(numberOfWave);
-        float tankSpawnRate = GetTankSpawnInterval(numberOfWave);
+        float scoutSpawnRate = GetScoutSpawnInterval(wave);
+        float meteorSpawnRate = GetMeteorSpawnInterval(wave);
+        float tankSpawnRate = GetTankSpawnInterval(wave);
 
         targetNumberOfEnemies = numberOfScouts + numberOfMeteors + numberOfTanks;
         currentNumberOfSpawnedEnemies = 0;
@@ -101,6 +102,7 @@ public class WaveManager : MonoBehaviour {
     }
 
     public IEnumerator EndWave(float waitTime) {
+        waveText.text = $"Wave: {++numberOfWave}";
         CameraManager.SetZoomedOut(true);
         shop.SetActive(true);
         waveInProgress = false;
@@ -108,7 +110,7 @@ public class WaveManager : MonoBehaviour {
 
         yield return new WaitForSeconds(waitTime);
 
-        StartWave(numberOfWave++);
+        StartWave(numberOfWave);
     }
 
     public int GetScoutCount(int wave) {

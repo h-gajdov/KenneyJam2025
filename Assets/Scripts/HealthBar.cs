@@ -25,8 +25,6 @@ public class HealthBar : MonoBehaviour {
         float healthPercent = (entity != null) ? entity.health / entity.startHealth : meteor.health / meteor.startHealth;
         slider.value = healthPercent;
         sliderFill.color = GameManager.SampleGradient(healthPercent);
-        Debug.Log(GameManager.SampleGradient(healthPercent));
-        Debug.Log(sliderFill.color);
 
         if(hideBackground) {
             if (prevValue != healthPercent) timeOfLastHealthBarUpdate = Time.time;

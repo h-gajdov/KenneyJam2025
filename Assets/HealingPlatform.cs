@@ -13,7 +13,7 @@ public class HealingPlatform : MonoBehaviour {
         if(other.CompareTag("Player")) {
             Player.instance.inPlatform = true;
             if(Time.time >= nextTimeToHeal) {
-                Player.instance.health = (Player.instance.health < Player.instance.startHealth) ? 10 + Player.instance.health : Player.instance.startHealth;
+                Player.instance.health = (10 + Player.instance.health < Player.instance.startHealth) ? 10 + Player.instance.health : Player.instance.startHealth;
                 PickupIndicator indicator = Instantiate(pickupIndicator, UIManager.CanvasTransform, true).GetComponent<PickupIndicator>();
                 indicator.transform.localPosition = Vector3.up * 100f;
                 indicator.SetInfo(indicatorIcon, "+");

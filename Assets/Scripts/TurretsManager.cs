@@ -24,9 +24,13 @@ public class TurretsManager : MonoBehaviour {
     }
 
     public void UpgradeTurret() {
+        if (Player.instance.coins < ShopManager.turretPrice) return;
+
         GameObject clickedButton = EventSystem.current.currentSelectedGameObject;
         int turretIndex = clickedButton.transform.GetSiblingIndex();
         turrets[turretIndex].Upgrade();
+
+        Player.instance.Pay(ShopManager.turretPrice);
         if (turrets[turretIndex].level == 3) clickedButton.SetActive(false);
     }
 
