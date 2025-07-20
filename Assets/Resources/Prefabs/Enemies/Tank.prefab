@@ -826,7 +826,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 7cb82fc33b733604f98a25a5377e0730, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cca18d9397ace9743af5934e30d35061, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -1359,7 +1359,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 7cb82fc33b733604f98a25a5377e0730, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cca18d9397ace9743af5934e30d35061, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1474,6 +1474,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sliderFill: {fileID: 6915233120708331736}
   sliderBackground: {fileID: 3169927482570170775}
+  entity: {fileID: 0}
+  hideBackground: 1
 --- !u!1 &7978263391771360239
 GameObject:
   m_ObjectHideFlags: 0
