@@ -8,14 +8,24 @@ public class CrosshairManager : MonoBehaviour {
     public Sprite inGameCrosshair;
     public Sprite defaultCrosshair;
 
+    public static CrosshairManager instance;
+
     public void SetCrosshair(Sprite sprite) {
         crosshairImage.sprite = sprite;
         crosshairImage.SetNativeSize();
     }
 
+    private void Awake() {
+        if (instance == null) instance = this;
+        else {
+            Destroy(this);
+            return;
+        }
+    }
+
     private void Start() {
         Cursor.visible = false;
-        SetCrosshair(inGameCrosshair);
+        SetCrosshair(defaultCrosshair);
     }
 
     private void Update() {

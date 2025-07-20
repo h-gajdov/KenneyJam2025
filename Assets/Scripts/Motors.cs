@@ -18,9 +18,11 @@ public class Motors : MonoBehaviour {
 
     public void TurnOnMotors() {
         alpha = 1;
+        AudioManager.StartPlaying("Engine");
     }
 
     public void TurnOffMotors() {
         alpha = 0;
+        AudioManager.StopPlaying("Engine");
     }
 }

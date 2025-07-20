@@ -44,6 +44,7 @@ public class Bullet : MonoBehaviour {
         impactEffect.GetComponentInChildren<SpriteRenderer>().sprite = Global.explosionSprites[randImpactSprite];
 
         Destroy(impactEffect, 1);
+        if(shotFrom != null && shotFrom.tag == "Player") AudioManager.Play("Explosion");
         if(destroyOnContact || other.CompareTag("PowerCore")) Destroy(gameObject);
     }
 

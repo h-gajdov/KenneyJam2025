@@ -68,6 +68,7 @@ public class WaveManager : MonoBehaviour {
     }
 
     private void StartWave(int wave) {
+        CrosshairManager.instance.SetCrosshair(CrosshairManager.instance.inGameCrosshair);
         CameraManager.SetZoomedOut(false);
         shop.SetActive(false);
 
@@ -102,6 +103,7 @@ public class WaveManager : MonoBehaviour {
     }
 
     public IEnumerator EndWave(float waitTime) {
+        CrosshairManager.instance.SetCrosshair(CrosshairManager.instance.defaultCrosshair);
         waveText.text = $"Wave: {++numberOfWave}";
         CameraManager.SetZoomedOut(true);
         shop.SetActive(true);

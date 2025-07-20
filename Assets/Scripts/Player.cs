@@ -93,7 +93,15 @@ public class Player : Entity {
     }
 
     public override void Die() {
+        AudioManager.Play("Lose");
+        this.enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
         shipBody.gameObject.SetActive(false);
+    }
+
+    public new void Shoot() {
+        base.Shoot();
+        AudioManager.Play("Laser1");
     }
 
     public ITarget[] GetEnemiesInRange() {
