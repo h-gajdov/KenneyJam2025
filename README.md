@@ -4,8 +4,7 @@
 
 This is my first ever game jam project—designed, developed, and submitted within the jam timeframe. The game explores the theme of **"power"** by combining strategic defense mechanics with dynamic offensive abilities.
 
-![Core Breach Banner](./README_IMAGES/banner.jpg)
-
+![Core Breach Banner](./README_IMAGES/Banner.jpg)
 
 ---
 
