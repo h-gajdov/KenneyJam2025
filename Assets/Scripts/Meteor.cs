@@ -40,6 +40,8 @@ public class Meteor : Bullet, ITarget {
             dropCoinsAmount -= value;
             numberOfCoins--;
         }
+
+        Player.instance.AddScore(20);
     }
 
     public void TakeDamage(float damage) {

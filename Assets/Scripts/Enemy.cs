@@ -89,6 +89,10 @@ public class Enemy : Entity {
             cn.value = value;
             numberOfCoins--;
         }
+
+        //TODO: Refactor this so that every enemy has a specific add amount to the score
+        int addScore = (type == EnemyType.Scout) ? 10 : 30;
+        Player.instance.AddScore(addScore);
     }
 
     private void OnDrawGizmosSelected() {

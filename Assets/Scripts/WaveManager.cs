@@ -63,7 +63,7 @@ public class WaveManager : MonoBehaviour {
         aliveEnemies.RemoveAll(enemy => toDelete.Contains(enemy));
 
         if(aliveEnemies.Count == 0 && currentNumberOfSpawnedEnemies == targetNumberOfEnemies) {
-            StartCoroutine(EndWave(10f));
+            StartCoroutine(EndWave(15f));
         }
     }
 

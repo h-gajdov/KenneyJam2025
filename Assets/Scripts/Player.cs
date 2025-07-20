@@ -15,10 +15,12 @@ public class Player : Entity {
     public float ultimateBulletDamage = 100f;
     public float ultimateFireRate = 5f;
     public float coins = 40f;
+    public int score = 0;
     public GameObject ultimateBulletPrefab;
     public MissleCrosshair missleCrosshair;
     public Slider powerMeterSlider;
     public TextMeshProUGUI coinsText;
+    public TextMeshProUGUI scoreText;
 
     Vector2 velocity = Vector2.zero;
     Animator powerMeterAnim;
@@ -127,6 +129,11 @@ public class Player : Entity {
     public void AddToPowerMeter() {
         if (ultimateIsOn) return;
         powerMeterValue += 0.4f;
+    }
+
+    public void AddScore(int value) {
+        score += value;
+        scoreText.text = $"Score: {score}";
     }
 
     public void AddCoins(float amount) {
