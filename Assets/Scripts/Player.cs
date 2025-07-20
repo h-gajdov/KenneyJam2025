@@ -97,6 +97,7 @@ public class Player : Entity {
         this.enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
         shipBody.gameObject.SetActive(false);
+        UIManager.instance.SetLoseScreen(score);
     }
 
     public new void Shoot() {
@@ -156,6 +157,7 @@ public class Player : Entity {
     }
 
     private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enemyInRangeRadius);
         Gizmos.color = Color.green;

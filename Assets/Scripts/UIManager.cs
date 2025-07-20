@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
     public Transform indicatorsParent;
     public GameObject pausePanel;
+    public GameObject loseScreen;
+    public TextMeshProUGUI loseScreText;
 
     public static UIManager instance;
     public static Transform CanvasTransform {
@@ -45,6 +48,16 @@ public class UIManager : MonoBehaviour {
     public void Resume() {
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    public void SetLoseScreen(int score) {
+        loseScreen.SetActive(true);
+        loseScreText.text = $"Score: " + score;
+    }
+
+    public void PlayAgain() {
+        SceneManager.LoadScene(1);
+        AudioManager.FindSound("MainMenuSong").source.volume = 0.1f;
     }
 
     public void ReturnToMenu() {
