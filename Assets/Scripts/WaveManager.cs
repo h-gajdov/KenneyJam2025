@@ -44,7 +44,7 @@ public class WaveManager : MonoBehaviour {
     int targetNumberOfEnemies = 0, currentNumberOfSpawnedEnemies = 0;
 
     private void Start() {
-        StartCoroutine(EndWave(5f));
+        StartCoroutine(EndWave(15f));
     }
 
     private void Update() {

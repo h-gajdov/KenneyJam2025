@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  enemyInRangeRadius: 20
+  enemyInRangeRadius: 15
   damage: 10
   fireRate: 5
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
@@ -849,7 +849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  enemyInRangeRadius: 20
+  enemyInRangeRadius: 15
   damage: 10
   fireRate: 5
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
@@ -2992,7 +2992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  enemyInRangeRadius: 20
+  enemyInRangeRadius: 15
   damage: 10
   fireRate: 5
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
@@ -4086,7 +4086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  enemyInRangeRadius: 20
+  enemyInRangeRadius: 15
   damage: 10
   fireRate: 5
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
@@ -4967,7 +4967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  enemyInRangeRadius: 20
+  enemyInRangeRadius: 15
   damage: 10
   fireRate: 5
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
@@ -5076,7 +5076,7 @@ MonoBehaviour:
   powerMeterDecaySpeed: 0.1
   ultimateBulletDamage: 100
   ultimateFireRate: 50
-  coins: 40
+  coins: 1000
   score: 0
   ultimateBulletPrefab: {fileID: 742315336842940224, guid: f529897b72ac88f42ae698e029616121, type: 3}
   missleCrosshair: {fileID: 1273435565}
@@ -5401,7 +5401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  enemyInRangeRadius: 20
+  enemyInRangeRadius: 15
   damage: 10
   fireRate: 5
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
@@ -5672,7 +5672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  enemyInRangeRadius: 20
+  enemyInRangeRadius: 15
   damage: 10
   fireRate: 5
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
@@ -5772,7 +5772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  enemyInRangeRadius: 20
+  enemyInRangeRadius: 15
   damage: 10
   fireRate: 5
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
@@ -5872,7 +5872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  enemyInRangeRadius: 20
+  enemyInRangeRadius: 15
   damage: 10
   fireRate: 5
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
@@ -7093,7 +7093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  enemyInRangeRadius: 20
+  enemyInRangeRadius: 15
   damage: 10
   fireRate: 5
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
@@ -7476,7 +7476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  enemyInRangeRadius: 20
+  enemyInRangeRadius: 15
   damage: 10
   fireRate: 5
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}
@@ -7751,7 +7751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  enemyInRangeRadius: 20
+  enemyInRangeRadius: 15
   damage: 10
   fireRate: 5
   bulletPrefab: {fileID: 2295563539945184043, guid: 1644eb6305842ab429a649ca332a6207, type: 3}

@@ -43,8 +43,12 @@ public class Turret : MonoBehaviour {
     }
 
     public Enemy GetEnemyInRange() {
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, enemyInRangeRadius);
-        return hit.GetComponent<Enemy>();
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, enemyInRangeRadius);
+        foreach(var hit in hits) {
+            Enemy enemy;
+            if (hit.TryGetComponent<Enemy>(out enemy)) return enemy;
+        }
+        return null;
     }
 
     public void Upgrade() {
