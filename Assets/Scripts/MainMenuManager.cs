@@ -8,12 +8,17 @@ public class MainMenuManager : MonoBehaviour {
     public GameObject howToPlayPanel;
     public GameObject buttonsPanel;
 
+    private void Start() {
+        Time.timeScale = 1f;
+    }
+
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) CloseAllPanels();
     }
 
     public void Play() {
         SceneManager.LoadScene(1);
+        Time.timeScale = 1f;
         AudioManager.FindSound("MainMenuSong").source.volume = 0.1f;
     }
 
