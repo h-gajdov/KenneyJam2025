@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: d5166c2e380bf6c4aacca7e1e8b9e492
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Kenney Input Keyboard & Mouse
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c34f4a7799742cd40a79f09ba8ed9c13, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

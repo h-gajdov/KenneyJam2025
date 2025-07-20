@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
     public Transform indicatorsParent;
@@ -47,6 +48,7 @@ public class UIManager : MonoBehaviour {
     }
 
     public void ReturnToMenu() {
-
+        SceneManager.LoadScene(0);
+        AudioManager.FindSound("MainMenuSong").source.volume = 0.5f;
     }
 }
